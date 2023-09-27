@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drag and Drop</title>
+<style>
+*{
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-style: italic;
+  box-sizing: border-box;
+}
+.container{
+  width: 100%;
+  min-height: 100vh;
+  background: #2f363e;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo_app{
+  width: 480px;
+  height: 700px;
+  padding: 30px;
+  border: 1px solid #111;
+  border-radius: 20px;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+  10px 10px 70px rgba(0, 0, 0, 0.25),
+  inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+  inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+  inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+} 
+.todo_app h1{
+  font-size: 33px;
+  font-weight: 550;
+  letter-spacing: 1.5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo_app h1 img{
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  margin-left: 20px;
+}
+.input_fild{
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2), -1px -1px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+}
+.input_fild input{
+  width: 77%;
+  padding: 17px 14px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+.input_fild button{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 3%;
+  font-size: 18px;
+  width: 20%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.1), inset -3px -3px 10px rgba(0, 0, 0, 0.1);
+}
+.work_list{
+  position: relative;
+  padding: 5px 0 0 0;
+  height: 480px;
+  overflow-y: auto;
+}
+::-webkit-scrollbar-track{
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background: #fff;
+}
+.work_list li{
+  position: relative;
+  list-style: none;
+  padding: 15px 10px 15px 50px;
+  width: 370px;
+  margin: 10px 35px 10px 0;
+  font-size: 20px;
+  border-radius: 25px;
+  color: #fff;
+  background: #1f83f28C;
+  transition: all 50ms linear;
+  
+}
+.work_list li::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #2f363e;
+}
+.work_list .ckack{
+  background: #607d8b;
+}
+.work_list .ckack::after{
+  content: '';
+  position: absolute;
+  left: 15px;
+  height: 6px;
+  width: 12px;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  top: 50%;
+  transform: translateY(-50%) rotate(315deg);
+}
+.work_list li span {
+  content: '';
+  position: absolute;
+  padding: 0 11.5px;
+  right: -42px;
+  font-size: 30px;
+  font-weight: 600;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.work_list li span:hover{
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+</style>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<body>
+  
+  
+  <div class="container">
+    
+    <div class="todo_app">
+      <h1>To Do List</h1>
+      <div class="input_fild">
+        <input type="text" placeholder="inter your text" class="input">
+        <button onclick="save()">SAVE</button>
+      </div>
+      
+      
+      <ul class="work_list"></ul>
+      
+      
+    </div>
+    
+  </div>
+  
+
+
+<script>
+
+let input = document.querySelector(".input");
+let work_list = document.querySelector(".work_list");
+
+
+function save() {
+  if(input.value == ""){
+    alert("you must write sumething");
+  }else{
+    let li = document.createElement("li");
+    li.innerHTML = input.value;
+    work_list.appendChild(li);
+    let span = document.createElement("span");
+    span.innerHTML = "\u00d7";
+    li.appendChild(span);
+  }
+  input.value = "";
+  SaveData()
+}
+
+
+work_list.addEventListener("click",function(e){
+  if(e.target.tagName == "LI"){
+    e.target.classList.toggle("ckack")
+    
+    SaveData()
+  }else if(e.target.tagName == "SPAN"){
+    e.target.parentElement.remove();
+    
+    SaveData()
+  }
+},false)
+
+
+function SaveData(){
+  localStorage.setItem("data",work_list.innerHTML)
+}
+
+
+function ShowData(){
+  work_list.innerHTML = localStorage.getItem("data")
+}
+
+ShowData()
+
+
+</script>
+
+
+</body>
+
+</html>
