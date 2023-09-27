@@ -23,9 +23,9 @@
   justify-content: center;
 }
 .todo_app{
-  width: 480px;
-  height: 700px;
-  padding: 30px;
+  width: 320px;
+  height: 500px;
+  padding: 20px;
   border: 1px solid #111;
   border-radius: 20px;
   box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
@@ -35,19 +35,13 @@
   inset -5px -5px 15px rgba(0, 0, 0, 0.75);
 } 
 .todo_app h1{
-  font-size: 33px;
+  font-size: 25px;
   font-weight: 550;
   letter-spacing: 1.5px;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.todo_app h1 img{
-  width: 35px;
-  height: 35px;
-  object-fit: cover;
-  margin-left: 20px;
 }
 .input_fild{
   position: relative;
@@ -58,8 +52,8 @@
 }
 .input_fild input{
   width: 77%;
-  padding: 17px 14px;
-  font-size: 20px;
+  padding: 10px 14px;
+  font-size: 17px;
   outline: none;
   border: none;
   background: transparent;
@@ -70,9 +64,9 @@
   top: 50%;
   transform: translateY(-50%);
   right: 3%;
-  font-size: 18px;
+  font-size: 14px;
   width: 20%;
-  padding: 10px;
+  padding: 5px;
   outline: none;
   border: none;
   border-radius: 25px;
@@ -81,7 +75,7 @@
 .work_list{
   position: relative;
   padding: 5px 0 0 0;
-  height: 480px;
+  height: 335px;
   overflow-y: auto;
 }
 ::-webkit-scrollbar-track{
@@ -96,22 +90,21 @@
 .work_list li{
   position: relative;
   list-style: none;
-  padding: 15px 10px 15px 50px;
-  width: 370px;
-  margin: 10px 35px 10px 0;
-  font-size: 20px;
+  padding: 8px 10px 8px 50px;
+  width: 238px;
+  margin: 10px 30px 10px 0;
+  font-size: 16px;
   border-radius: 25px;
   color: #fff;
   background: #1f83f28C;
   transition: all 50ms linear;
-  
 }
 .work_list li::before {
   content: '';
   position: absolute;
   left: 8px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
@@ -123,21 +116,21 @@
 .work_list .ckack::after{
   content: '';
   position: absolute;
-  left: 15px;
+  left: 13px;
   height: 6px;
   width: 12px;
-  border-left: 3px solid #fff;
-  border-bottom: 3px solid #fff;
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
   top: 50%;
-  transform: translateY(-50%) rotate(315deg);
+  transform: translateY(-70%) rotate(315deg);
 }
 .work_list li span {
   content: '';
   position: absolute;
   padding: 0 11.5px;
-  right: -42px;
-  font-size: 30px;
-  font-weight: 600;
+  right: -35px;
+  font-size: 25px;
+  font-weight: 550;
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
